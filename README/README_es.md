@@ -10,7 +10,6 @@
 
 [![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-2F6FB5?style=flat-square&labelColor=111111)](../LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-8DB8E3?style=flat-square&labelColor=111111)](../skills/trend-predictor/scripts/trend_predictor.py)
-[![Tests](https://img.shields.io/badge/tests-66%20aprobados-2F6FB5?style=flat-square&labelColor=111111)](../tests/results/SUMMARY.md)
 
 [Inicio rápido](#inicio-rápido) · [Cómo funciona](#cómo-funciona) · [Pruebas](#qué-tan-bien-funciona) · [Instalación](#instalación) · [Uso](#uso) · [Límites](#límites) · [Preguntas](#preguntas-frecuentes)
 

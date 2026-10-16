@@ -10,7 +10,6 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-2F6FB5?style=flat-square&labelColor=111111)](../LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10%2B-8DB8E3?style=flat-square&labelColor=111111)](../skills/trend-predictor/scripts/trend_predictor.py)
-[![Tests](https://img.shields.io/badge/tests-66%20passed-2F6FB5?style=flat-square&labelColor=111111)](../tests/results/SUMMARY.md)
 
 [快速开始](#快速开始) · [工作原理](#工作原理) · [测试](#效果如何) · [安装](#安装) · [用法](#用法) · [局限](#局限) · [常见问题](#常见问题)
 
