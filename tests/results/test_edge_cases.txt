@@ -1,0 +1,36 @@
+PASS E1 CPI deflation: nominal +3%/yr becomes ~0% real
+PASS E2 all 5 bad rows rejected
+PASS E2 rejection reasons recorded
+PASS E3 mixed date formats + gaps: trend ~ -10%/yr
+PASS E5 short series graded D, no forecast
+PASS E6 mixed products auto-fixed (frontier)
+PASS E6 frontier recovers the -10%/yr trend
+PASS E7 noisy series flagged uninformative
+PASS E4 approaching the ceiling -> gap-to-limit model
+PASS E4 ceiling caps the upper band
+PASS horizon 15 present
+PASS E3 stall scenario written
+PASS E3 bands monotone (q025<q500<q975)
+PASS plot fan_E1_all.png
+PASS plot fan_E3_all.png
+PASS plot fan_E4_all.png
+PASS plot fan_E7_all.png
+PASS R2 stall scenario lowers probability
+PASS R3 target above ceiling = 0
+PASS R4 short series -> no probability, explained
+PASS R5 missing constraint -> no crash, explained
+PASS R6 past event -> eventual prior
+PASS R7 overrides applied
+PASS R8 unknown event type falls back to 'other'
+PASS R9 missing event -> explained
+PASS R10 already mature = 1
+PASS R11 judgment with p_3y only -> flat after 3y
+PASS R12 higher-better reachable target in (0,1]
+PASS project score has verdicts
+PASS feasibility plot
+PASS unscored critical requirement -> 'incomplete', not a fake verdict
+PASS runs with no constraints.csv and theilsen drift
+PASS workbook with missing sheets
+PASS feasibility without requirements.csv exits with a clear message
+
+ALL EDGE CASES PASSED  (<tmpdir>)

@@ -1,0 +1,12 @@
+{
+  "origin_year": 2025,
+  "base_year": 2025,
+  "theta": 0.63,
+  "drift": "endpoint",
+  "autofix": true,
+  "horizons": [
+    5,
+    10
+  ],
+  "rejected_points": 0
+}

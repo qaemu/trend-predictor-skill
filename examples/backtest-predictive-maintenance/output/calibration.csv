@@ -1,0 +1,5 @@
+constraint_id,tier,n,cover80,cover95,bias_log,verdict
+C02,gpu_fp32_consumer,70,1.0,1.0,0.865,"biased: past forecasts were too optimistic (x2.38); the trend changed, refit on recent years"
+C04,all,3,1.0,1.0,-0.532,too few checks
+C09,all,75,0.867,0.92,0.0,calibrated
+ALL,pooled,148,0.932,0.959,0.399,biased: past forecasts were too optimistic (x1.49); check each series

@@ -1,0 +1,33 @@
+constraint_id  origin  autofix  years_checked  inside_80  mean_error_factor  range80_10y_x
+          C02    2013    False             10       1.00               2.91      4192720.2
+          C02    2013     True             10       1.00               2.91      4192720.2
+          C02    2015    False              8       1.00               2.40       175706.7
+          C02    2015     True              8       1.00               2.40       175706.7
+          C02    2017    False              6       1.00               2.10        29608.2
+          C02    2017     True              6       1.00               2.10        29608.2
+          C02    2019    False              4       1.00               1.33        13669.3
+          C02    2019     True              4       1.00               1.33        13669.3
+          C09    2013    False             10       1.00               1.02            1.2
+          C09    2013     True             10       1.00               1.02            1.2
+          C09    2015    False              8       1.00               1.02            1.2
+          C09    2015     True              8       1.00               1.02            1.2
+          C09    2017    False              6       1.00               1.03            1.2
+          C09    2017     True              6       1.00               1.03            1.2
+          C09    2019    False              4       0.25               1.04            1.2
+          C09    2019     True              4       0.25               1.04            1.2
+
+PASS wages: honest coverage (>= 70% of later values inside the 80% range)  [89% of 28]
+note  wages forecast from 2019: 1 of 4 later years inside the 80% range (2020 COVID jump, 2021-23 inflation)
+PASS wages: forecasts within 10% on average
+PASS wages: 10-year 80% range narrower than 1.5x  [1.2]
+PASS wages graded A or B today  [B]
+PASS GPU: not claimed informative at 10 years  [NO: 80% range > 100x even after fixes; needs denser data]
+PASS GPU: grade C (cannot carry a headline)
+PASS GPU: real values still inside the (wide) 80% range  [100%]
+PASS thermal: mixed products repaired with the frontier
+PASS thermal: still reported as uninformative
+PASS plot fan_C09_all.png
+PASS plot fan_C02_gpu_fp32_consumer.png
+PASS plot fan_C04_all.png
+
+ALL REAL-DATA CHECKS PASSED

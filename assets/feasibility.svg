@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" width="900" height="580" role="img" aria-label="Feasibility chart: probability each requirement is met at +5 and +10 years, weakest link and verdict" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<title>Feasibility chart: probability each requirement is met at +5 and +10 years, weakest link and verdict</title>
+<rect width="900" height="580" rx="20" fill="#F4F8FD"/>
+<text x="48" y="64" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >Feasibility: laundry-folding home robot under $2,000</text>
+<text x="48" y="90" font-size="14" font-weight="400" fill="#7A7A85" text-anchor="start" >Probability each requirement is met</text>
+<text x="48" y="150" font-size="15" font-weight="600" fill="#2F6FB5" text-anchor="start" >R1 Actuators ≤ $40 per joint</text>
+<rect x="330" y="130" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="130" width="40" height="16" rx="8" fill="#8DB8E3"/>
+<rect x="330" y="150" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="150" width="305" height="16" rx="8" fill="#2F6FB5"/>
+<text x="840" y="143" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >8%</text>
+<text x="840" y="163" font-size="12" font-weight="600" fill="#111111" text-anchor="start" >61%</text>
+<rect x="48" y="158" width="92" height="20" rx="10.0" fill="#E3EFFA"/><text x="93.96000000000001" y="171.96" font-size="11" font-weight="500" fill="#2F6FB5" text-anchor="middle" >weakest link</text>
+<text x="48" y="212" font-size="15" font-weight="400" fill="#3D3D44" text-anchor="start" >R2 Grasping model reaches TRL 9</text>
+<rect x="330" y="192" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="192" width="275" height="16" rx="8" fill="#8DB8E3"/>
+<rect x="330" y="212" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="212" width="440" height="16" rx="8" fill="#2F6FB5"/>
+<text x="840" y="205" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >55%</text>
+<text x="840" y="225" font-size="12" font-weight="600" fill="#111111" text-anchor="start" >88%</text>
+<text x="48" y="274" font-size="15" font-weight="400" fill="#3D3D44" text-anchor="start" >R3 Safety standard published</text>
+<rect x="330" y="254" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="254" width="410" height="16" rx="8" fill="#8DB8E3"/>
+<rect x="330" y="274" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="274" width="475" height="16" rx="8" fill="#2F6FB5"/>
+<text x="840" y="267" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >82%</text>
+<text x="840" y="287" font-size="12" font-weight="600" fill="#111111" text-anchor="start" >95%</text>
+<text x="48" y="336" font-size="15" font-weight="400" fill="#3D3D44" text-anchor="start" >R4 Battery ≥ 4 h at 300 W</text>
+<rect x="330" y="316" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="316" width="350" height="16" rx="8" fill="#8DB8E3"/>
+<rect x="330" y="336" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="336" width="465" height="16" rx="8" fill="#2F6FB5"/>
+<text x="840" y="329" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >70%</text>
+<text x="840" y="349" font-size="12" font-weight="600" fill="#111111" text-anchor="start" >93%</text>
+<text x="48" y="398" font-size="15" font-weight="400" fill="#3D3D44" text-anchor="start" >R5 Buyers trust it in the home</text>
+<rect x="330" y="378" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="378" width="175" height="16" rx="8" fill="#8DB8E3"/>
+<rect x="330" y="398" width="500" height="16" rx="8" fill="#FFFFFF" stroke="#C9DDF2"/>
+<rect x="330" y="398" width="310" height="16" rx="8" fill="#2F6FB5"/>
+<text x="840" y="391" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >35%</text>
+<text x="840" y="411" font-size="12" font-weight="600" fill="#111111" text-anchor="start" >62%</text>
+<rect x="330" y="444" width="14" height="14" rx="4" fill="#8DB8E3"/>
+<text x="352" y="456" font-size="13" font-weight="400" fill="#3D3D44" text-anchor="start" >by +5 years</text>
+<rect x="470" y="444" width="14" height="14" rx="4" fill="#2F6FB5"/>
+<text x="492" y="456" font-size="13" font-weight="400" fill="#3D3D44" text-anchor="start" >by +10 years</text>
+<rect x="48" y="490" width="804" height="56" rx="12" fill="#FFFFFF" stroke="#C9DDF2"/>
+<text x="70" y="524" font-size="16" font-weight="600" fill="#111111" text-anchor="start" >+5 y: UNLIKELY</text>
+<text x="250" y="524" font-size="16" font-weight="600" fill="#111111" text-anchor="start" >+10 y: LONG SHOT (joint 29%, weakest R1 61%)</text>
+<text x="830" y="524" font-size="16" font-weight="600" fill="#2F6FB5" text-anchor="end" >start by 2031</text>
+</svg>

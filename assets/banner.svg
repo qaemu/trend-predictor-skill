@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="1280" height="440" role="img" aria-label="TREND-PREDICTOR: project the constraints your project depends on 5 and 10 years ahead, and see when it becomes feasible" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<title>TREND-PREDICTOR: project the constraints your project depends on 5 and 10 years ahead, and see when it becomes feasible</title>
+<rect width="1280" height="440" rx="20" fill="#F4F8FD"/>
+<text x="72" y="166" font-size="64" font-weight="600" fill="#111111" text-anchor="start" letter-spacing="-2" textLength="540" lengthAdjust="spacingAndGlyphs">TREND-PREDICTOR</text>
+<text x="74" y="222" font-size="24" font-weight="400" fill="#3D3D44" text-anchor="start" >Project the constraints your project</text>
+<text x="74" y="254" font-size="24" font-weight="400" fill="#3D3D44" text-anchor="start" >depends on 5 and 10 years ahead, and</text>
+<text x="74" y="286" font-size="24" font-weight="400" fill="#3D3D44" text-anchor="start" >see when it becomes feasible.</text>
+<rect x="73.5" y="329.5" width="115" height="33" rx="16.5" fill="none" stroke="#C9DDF2"/>
+<rect x="74" y="330" width="114" height="32" rx="16.0" fill="#FFFFFF"/><text x="131.12" y="351.04" font-size="14" font-weight="500" fill="#111111" text-anchor="middle" >Agent skill</text>
+<rect x="197.74" y="329.5" width="115" height="33" rx="16.5" fill="none" stroke="#C9DDF2"/>
+<rect x="198.24" y="330" width="114" height="32" rx="16.0" fill="#FFFFFF"/><text x="255.36" y="351.04" font-size="14" font-weight="500" fill="#111111" text-anchor="middle" >Claude Code</text>
+<rect x="321.98" y="329.5" width="92" height="33" rx="16.5" fill="none" stroke="#C9DDF2"/>
+<rect x="322.48" y="330" width="91" height="32" rx="16.0" fill="#FFFFFF"/><text x="367.84000000000003" y="351.04" font-size="14" font-weight="500" fill="#111111" text-anchor="middle" >OpenCode</text>
+<rect x="422.70000000000005" y="329.5" width="68" height="33" rx="16.5" fill="none" stroke="#C9DDF2"/>
+<rect x="423.20000000000005" y="330" width="67" height="32" rx="16.0" fill="#FFFFFF"/><text x="456.80000000000007" y="351.04" font-size="14" font-weight="500" fill="#111111" text-anchor="middle" >Codex</text>
+<rect x="668" y="60" width="548" height="328" rx="16" fill="#C9DDF2" opacity="0.45"/>
+<rect x="668" y="56" width="548" height="328" rx="16" fill="#FFFFFF" stroke="#C9DDF2"/>
+<text x="696" y="100" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >Actuator cost per joint</text>
+<text x="696" y="124" font-size="14" font-weight="400" fill="#7A7A85" text-anchor="start" >USD, history and forecast with 80% range</text>
+<line x1="696" y1="148.0" x2="1188" y2="148.0" stroke="#E3EFFA" stroke-width="1"/>
+<line x1="696" y1="196.0" x2="1188" y2="196.0" stroke="#E3EFFA" stroke-width="1"/>
+<line x1="696" y1="244.0" x2="1188" y2="244.0" stroke="#E3EFFA" stroke-width="1"/>
+<line x1="696" y1="292.0" x2="1188" y2="292.0" stroke="#E3EFFA" stroke-width="1"/>
+<polygon points="966.6,221.9 994.3,219.9 1022.0,223.3 1049.6,227.6 1077.3,232.3 1105.0,237.3 1132.7,242.6 1160.3,248.0 1188.0,253.5 1188.0,313.5 1160.3,304.6 1132.7,295.6 1105.0,286.5 1077.3,277.1 1049.6,267.4 1022.0,257.3 994.3,246.3 966.6,229.9" fill="#E3EFFA"/>
+<polyline points="966.6,225.9 994.3,233.1 1022.0,240.3 1049.6,247.5 1077.3,254.7 1105.0,261.9 1132.7,269.1 1160.3,276.3 1188.0,283.5" fill="none" stroke="#2F6FB5" stroke-width="2" stroke-dasharray="6 5"/>
+<polyline points="704.0,161.9 733.2,166.8 762.4,179.7 791.5,179.8 820.7,192.3 849.9,197.2 879.1,200.5 908.2,212.9 937.4,214.2 966.6,225.9" fill="none" stroke="#111111" stroke-width="2.2" stroke-linejoin="round"/>
+<circle cx="704.0" cy="161.9" r="3.6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+<circle cx="791.5" cy="179.8" r="3.6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+<circle cx="879.1" cy="200.5" r="3.6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+<circle cx="966.6" cy="225.9" r="3.6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+<circle cx="966.6" cy="225.9" r="3.6" fill="#FFFFFF" stroke="#111111" stroke-width="1.8"/>
+<line x1="696" y1="263.2" x2="1188" y2="263.2" stroke="#2F6FB5" stroke-width="1.5"/>
+<text x="700" y="255.2" font-size="12" font-weight="400" fill="#2F6FB5" text-anchor="start" >target from unit economics</text>
+<line x1="966.6" y1="148" x2="966.6" y2="292" stroke="#C9DDF2" stroke-width="1"/>
+<text x="696" y="312" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >2010</text>
+<text x="966.6" y="312" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="middle" >today</text>
+<text x="1188" y="312" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="end" >+10 y</text>
+<text x="696.0" y="342" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >8%</text>
+<text x="696.0" y="362" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >met by +5 y</text>
+<text x="819.0" y="342" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >61%</text>
+<text x="819.0" y="362" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >met by +10 y</text>
+<text x="942.0" y="342" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >B</text>
+<text x="942.0" y="362" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >data grade</text>
+<text x="1065.0" y="342" font-size="20" font-weight="600" fill="#111111" text-anchor="start" >2031</text>
+<text x="1065.0" y="362" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="start" >start building</text>
+<text x="1196" y="414" font-size="12" font-weight="400" fill="#7A7A85" text-anchor="end" >Illustrative example</text>
+</svg>

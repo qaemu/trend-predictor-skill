@@ -1,0 +1,9 @@
+PASS A. clean data: fixes trigger rarely (<30% of series)  [5/80]
+PASS A. clean data: 80% coverage stays honest with fixes on (>=0.70)  [fix 0.72 vs default 0.72]
+PASS A. clean data: fixes do not make accuracy worse (within 5%)  [fix 0.442 vs default 0.445]
+PASS B. slowed trend: window fix triggers (>=70%)  [30/30]
+PASS B. slowed trend: fixed forecast beats default out of sample (>=70%)  [28/30]
+PASS C. outlier first year: a fix triggers (>=60%)  [30/30]
+PASS C. outlier first year: fixed forecast beats default (>=60%)  [27/30]
+
+ALL AUTOFIX CHECKS PASSED

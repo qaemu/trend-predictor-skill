@@ -1,0 +1,14 @@
+{
+  "name": "trend-predictor",
+  "description": "TREND-PREDICTOR: will this project be feasible in 5 or 10 years?",
+  "owner": {
+    "name": "qaemu"
+  },
+  "plugins": [
+    {
+      "name": "trend-predictor",
+      "source": "./",
+      "description": "Calibrated constraint forecasts (Farmer-Lafond), hindcast checks, automatic repairs, dated events, readiness priors, feasibility scoring with weakest link and start window. Pairs with PARADIGMA."
+    }
+  ]
+}
