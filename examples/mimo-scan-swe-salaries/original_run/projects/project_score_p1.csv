@@ -1,0 +1,4 @@
+horizon_years,year,joint_if_independent,weakest_link_bound,weakest_requirement,verdict,status,joint_path
+5,2030.0,0.423,0.5,jud01,PLAUSIBLE,,
+10,2035.0,0.55,0.65,jud01,PLAUSIBLE,,
+start-window,2032.0,,,,,P(all critical met) first >= 0.5 in 2034; start building by 2032.0 with a 2.0-year lead,"{""2025"": 0.0, ""2026"": 0.0, ""2027"": 0.126, ""2028"": 0.216, ""2029"": 0.328, ""2030"": 0.423, ""2031"": 0.449, ""2032"": 0.474, ""2033"": 0.499, ""2034"": 0.525, ""2035"": 0.55}"

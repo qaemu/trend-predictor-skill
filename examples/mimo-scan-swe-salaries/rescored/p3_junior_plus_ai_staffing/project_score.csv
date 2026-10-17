@@ -1,0 +1,4 @@
+horizon_years,year,joint_if_independent,weakest_link_bound,weakest_requirement,weakest_evidence,verdict,verdict_if_inputs_hold,status,joint_path
+5,2030,0.205,0.414,req02,C,UNCERTAIN (driven by req02: evidence grade C),LONG SHOT,,
+10,2035,0.382,0.6,jud02,Low,UNCERTAIN (driven by jud02: evidence grade Low),PLAUSIBLE,,
+start-window,,,,,,,,P(all critical met) stays < 0.5 through 2035,"{""2025"": 0.0, ""2026"": 0.0, ""2027"": 0.016, ""2028"": 0.063, ""2029"": 0.129, ""2030"": 0.205, ""2031"": 0.249, ""2032"": 0.287, ""2033"": 0.321, ""2034"": 0.353, ""2035"": 0.382}"

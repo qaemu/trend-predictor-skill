@@ -101,6 +101,7 @@ npx skills add qaemu/paradigma-skill
 | **有可能** | 联合概率 ≥ 35% |
 | **希望渺茫** | 联合概率 ≥ 12% |
 | **不太可能** | 联合概率 < 12% |
+| **不确定** | 当最薄弱需求依赖薄弱证据时（C/D 级曲线，或由本次运行自己的智能体估计的概率），取代上述结论。原评分保留为"若输入成立" |
 
 **交付物**
 
@@ -115,9 +116,10 @@ npx skills add qaemu/paradigma-skill
 | 套件 | 检验内容 | 结果 |
 |---|---|---|
 | [`test_engine`](../tests/results/test_engine.txt) | 在 60 项模拟技术上的校准；端到端的预测、可行性、图表和工作簿 | 13 / 13 |
-| [`test_edge_cases`](../tests/results/test_edge_cases.txt) | 通胀、错误数据行、混合日期格式、缺口、物理极限、产品混杂、缺失文件、手动覆盖 | 34 / 34 |
+| [`test_edge_cases`](../tests/results/test_edge_cases.txt) | 通胀、错误数据行、混合日期格式、缺口、物理极限、产品混杂、缺失文件、手动覆盖、"不确定"结论规则 | 39 / 39 |
 | [`test_autofix`](../tests/results/test_autofix.txt) | 自动修复在干净数据上不添乱，在真实的趋势变化和异常值上有帮助 | 7 / 7 |
 | [`test_real_data`](../tests/results/test_real_data.txt) | 在真实且有来源的数据上回测 | 12 / 12 |
+| [`test_real_run`](../tests/results/test_real_run.txt) | 重新评分一次由免费模型（MiMo V2.6 Flash）完成的真实运行：概率完全复现，证据薄弱的结论变为"不确定" | 23 / 23 |
 
 不加修饰地说，这些数字意味着：
 
@@ -127,7 +129,9 @@ npx skills add qaemu/paradigma-skill
 
 ## 示例
 
-[`examples/backtest-predictive-maintenance`](../examples/backtest-predictive-maintenance) 中是一次回测，使用的是 PARADIGMA 预测性维护示例中带来源的数据。它站在 2013、2015、2017 和 2019 年，仅用当时可得的数据进行预测，再与实际发生的情况比较。每个预测、范围和误差都在 `output/backtest.csv` 中。
+**免费模型的一次真实运行。** [`examples/mimo-scan-swe-salaries`](../examples/mimo-scan-swe-salaries) 是 MiMo V2.6 Flash 在 OpenCode 中对美国软件工程薪资所做的完整扫描，附有评审。数据收集和核查站得住（84 项检查中 92% 一致）。三个项目结论中有两个依赖其自身智能体编出的概率，而且它引用的校准数字比自己文件中的更好。引擎现在会把这类结论标为"不确定"，指令也要求原样引用校准数字。
+
+**一次回测。** [`examples/backtest-predictive-maintenance`](../examples/backtest-predictive-maintenance) 中是一次回测，使用的是 PARADIGMA 预测性维护示例中带来源的数据。它站在 2013、2015、2017 和 2019 年，仅用当时可得的数据进行预测，再与实际发生的情况比较。每个预测、范围和误差都在 `output/backtest.csv` 中。
 
 ## 安装
 
@@ -302,7 +306,7 @@ CSV 结构见 [`SKILL.md`，Appendix B](../skills/trend-predictor/SKILL.md#appen
 - **需要数据。** 年度变化少于 5 个的序列不会得到预测，嘈杂的序列会被报告为没有信息量。大多数领域只有少数几条又长又好的序列。
 - **无法预见冲击。** 疫情、战争或突然的政策变化会让数值跑出范围。范围覆盖的是典型的意外，而不是所有意外。
 - **部分数字是经验判断。** 事件、成熟度和加宽的假设都已标出，可以调整。
-- **状态：v0.1，实验性。** 已在模拟数据和一次真实回测上测试。尚未发布针对真实项目的完整运行。
+- **状态：v0.2，实验性。** 已在模拟数据、一次真实回测和一次（免费模型的）完整真实运行上测试，后者附评审一并发布。
 
 ## 常见问题
 
@@ -328,7 +332,7 @@ trend-predictor-skill/
 │   └── scripts/trend_predictor.py   引擎（cpi、hindcast、forecast、feasibility、workbook）
 ├── tests/                       四个离线测试套件 + run_all.sh
 │   └── results/                 最近一次运行的已提交输出（SUMMARY.md）
-├── examples/                    在真实且有来源的数据上的回测
+├── examples/                    真实数据回测 + 一次经过评审的免费模型真实运行
 ├── docs/research.md             方法背后的研究及其来源
 ├── dist/trend-predictor.zip     可直接上传到 Claude 应用的技能包（tools/package.sh）
 ├── tools/                       make_assets.py（README 插图）、package.sh（重建 ZIP）

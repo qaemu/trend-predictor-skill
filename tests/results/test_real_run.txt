@@ -1,0 +1,35 @@
+                        run horizon  joint weakest evidence mimo_verdict                                  engine_verdict
+                       scan     +5y  0.062   jud03   Medium     UNLIKELY                                        UNLIKELY
+                       scan    +10y  0.136   jud03   Medium    LONG SHOT                                       LONG SHOT
+ p1_entry_band_benchmarking     +5y  0.423   jud01      Low    PLAUSIBLE UNCERTAIN (driven by jud01: evidence grade Low)
+ p1_entry_band_benchmarking    +10y  0.550   jud01      Low    PLAUSIBLE UNCERTAIN (driven by jud01: evidence grade Low)
+p2_nonprofit_apprenticeship     +5y  0.125   jud03   Medium    LONG SHOT                                       LONG SHOT
+p2_nonprofit_apprenticeship    +10y  0.227   jud03   Medium    LONG SHOT                                       LONG SHOT
+ p3_junior_plus_ai_staffing     +5y  0.205   req02        C    LONG SHOT   UNCERTAIN (driven by req02: evidence grade C)
+ p3_junior_plus_ai_staffing    +10y  0.382   jud02      Low    PLAUSIBLE UNCERTAIN (driven by jud02: evidence grade Low)
+
+PASS scan +5y: joint probability reproduced  [0.062 vs 0.062]
+PASS scan +5y: original verdict kept as verdict_if_inputs_hold
+PASS scan +10y: joint probability reproduced  [0.136 vs 0.136]
+PASS scan +10y: original verdict kept as verdict_if_inputs_hold
+PASS p1_entry_band_benchmarking +5y: joint probability reproduced  [0.423 vs 0.423]
+PASS p1_entry_band_benchmarking +5y: original verdict kept as verdict_if_inputs_hold
+PASS p1_entry_band_benchmarking +10y: joint probability reproduced  [0.55 vs 0.55]
+PASS p1_entry_band_benchmarking +10y: original verdict kept as verdict_if_inputs_hold
+PASS p2_nonprofit_apprenticeship +5y: joint probability reproduced  [0.125 vs 0.125]
+PASS p2_nonprofit_apprenticeship +5y: original verdict kept as verdict_if_inputs_hold
+PASS p2_nonprofit_apprenticeship +10y: joint probability reproduced  [0.227 vs 0.227]
+PASS p2_nonprofit_apprenticeship +10y: original verdict kept as verdict_if_inputs_hold
+PASS p3_junior_plus_ai_staffing +5y: joint probability reproduced  [0.205 vs 0.205]
+PASS p3_junior_plus_ai_staffing +5y: original verdict kept as verdict_if_inputs_hold
+PASS p3_junior_plus_ai_staffing +10y: joint probability reproduced  [0.382 vs 0.382]
+PASS p3_junior_plus_ai_staffing +10y: original verdict kept as verdict_if_inputs_hold
+PASS p1_entry_band_benchmarking +5y: weak weakest link -> UNCERTAIN  [UNCERTAIN (driven by jud01: evidence grade Low)]
+PASS p1_entry_band_benchmarking +10y: weak weakest link -> UNCERTAIN  [UNCERTAIN (driven by jud01: evidence grade Low)]
+PASS p3_junior_plus_ai_staffing +5y: weak weakest link -> UNCERTAIN  [UNCERTAIN (driven by req02: evidence grade C)]
+PASS p3_junior_plus_ai_staffing +10y: weak weakest link -> UNCERTAIN  [UNCERTAIN (driven by jud02: evidence grade Low)]
+PASS p2 +5y: externally sourced weakest link (LEAP, Medium) -> verdict unchanged  [Medium, LONG SHOT]
+PASS p2 +10y: externally sourced weakest link (LEAP, Medium) -> verdict unchanged  [Medium, LONG SHOT]
+PASS IDEA-agent judgment graded Low
+
+ALL REAL-RUN CHECKS PASSED

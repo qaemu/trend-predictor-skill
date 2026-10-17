@@ -1,0 +1,85 @@
+check_id,area,item,expected,found,verdict,severity,url_checked
+ck001,data_grade_b,wage_oes_p90 2016 (15-1132 P90 hourly),75.77,75.77,MATCH,none,https://www.bls.gov/oes/2016/may/oes151132.htm
+ck002,data_grade_b,wage_oes_p90 2017 (15-1132 P90 hourly),76.97,76.97,MATCH,none,https://www.bls.gov/oes/2017/may/oes151132.htm
+ck003,data_grade_b,wage_oes_p90 2018 (15-1132 P90 hourly),77.54,77.54,MATCH,none,https://www.bls.gov/oes/2018/may/oes151132.htm
+ck004,data_grade_b,wage_oes_p90 2019 (15-1256 P90 hourly),79.13,79.13,MATCH,none,https://www.bls.gov/oes/2019/may/oes151256.htm
+ck005,data_grade_b,wage_oes_p90 2020 (15-1256 P90 hourly),81.78,81.78,MATCH,none,https://www.bls.gov/oes/2020/may/oes151256.htm
+ck006,data_grade_b,wage_oes_p90 2021 (15-1252 P90 hourly),81.04,81.04,MATCH,none,https://www.bls.gov/oes/2021/may/oes151252.htm
+ck007,data_grade_b,wage_oes_p90 2022 (15-1252 P90 hourly),95.24,95.24,MATCH,none,https://www.bls.gov/oes/2022/may/oes151252.htm
+ck008,data_grade_b,wage_oes_p90 2023 (15-1252 P90 hourly),100.30,100.30,MATCH,none,https://www.bls.gov/oes/2023/may/oes151252.htm
+ck009,data_grade_b,wage_oes_p90 2024 (15-1252 P90 hourly),101.66,101.66 (national_M2024_dl.xlsx in cited Wayback capture),MATCH,none,https://web.archive.org/web/20250403030556id_/https://www.bls.gov/oes/special-requests/oesm24nat.zip
+ck010,data_grade_b,wage_oes_p90 2025 (15-1252 P90 hourly),103.21,103.21 (national_M2025_dl.xlsx in cited Wayback capture),MATCH,none,https://web.archive.org/web/20260516122846id_/https://www.bls.gov/oes/special-requests/oesm25nat.zip
+ck011,data_grade_b,swe_senior_plus_salary 2016 (A_PCT90),157590,157590,MATCH,none,https://www.bls.gov/oes/2016/may/oes151132.htm
+ck012,data_grade_b,swe_senior_plus_salary 2017 (A_PCT90),160100,160100,MATCH,none,https://www.bls.gov/oes/2017/may/oes151132.htm
+ck013,data_grade_b,swe_senior_plus_salary 2018 (A_PCT90),161290,161290,MATCH,none,https://www.bls.gov/oes/2018/may/oes151132.htm
+ck014,data_grade_b,swe_senior_plus_salary 2019 (A_PCT90),164590,164590,MATCH,none,https://www.bls.gov/oes/2019/may/oes151256.htm
+ck015,data_grade_b,swe_senior_plus_salary 2020 (A_PCT90),170100,170100,MATCH,none,https://www.bls.gov/oes/2020/may/oes151256.htm
+ck016,data_grade_b,swe_senior_plus_salary 2021 (A_PCT90),168570,168570,MATCH,none,https://www.bls.gov/oes/2021/may/oes151252.htm
+ck017,data_grade_b,swe_senior_plus_salary 2022 (A_PCT90),198100,198100,MATCH,none,https://www.bls.gov/oes/2022/may/oes151252.htm
+ck018,data_grade_b,swe_senior_plus_salary 2023 (A_PCT90),208620,208620,MATCH,none,https://www.bls.gov/oes/2023/may/oes151252.htm
+ck019,data_grade_b,swe_senior_plus_salary 2024 (A_PCT90),211450,211450 (xlsx),MATCH,none,https://web.archive.org/web/20250403030556id_/https://www.bls.gov/oes/special-requests/oesm24nat.zip
+ck020,data_grade_b,swe_senior_plus_salary 2025 (A_PCT90),214670,214670 (xlsx),MATCH,none,https://web.archive.org/web/20260516122846id_/https://www.bls.gov/oes/special-requests/oesm25nat.zip
+ck021,data_grade_b,OEWS employment 2024 (15-1252),1654440,1654440 (xlsx),MATCH,none,https://web.archive.org/web/20250403030556id_/https://www.bls.gov/oes/special-requests/oesm24nat.zip
+ck022,data_grade_b,OEWS employment 2025 (15-1252),1687890,1687890 (xlsx),MATCH,none,https://web.archive.org/web/20260516122846id_/https://www.bls.gov/oes/special-requests/oesm25nat.zip
+ck023,data_grade_b,Annual/hourly internal consistency 2023 (100.30*2080),208620 within BLS rounding,208624 -> rounds to published annual ladder, MATCH,none,https://www.bls.gov/oes/2023/may/oes151252.htm
+ck024,data_grade_b,swe_senior_junior_ratio 2019 (P75/P25),1.6538,136320/82430=1.6538, MATCH,none,https://www.bls.gov/oes/2019/may/oes151256.htm
+ck025,data_grade_b,swe_senior_junior_ratio 2021 (P75/P25),1.6723,151960/90870=1.6723, MATCH,none,https://www.bls.gov/oes/2021/may/oes151252.htm
+ck026,data_grade_b,swe_senior_junior_ratio 2022 (P75/P25),1.6684,161480/96790=1.6684, MATCH,none,https://www.bls.gov/oes/2022/may/oes151252.htm
+ck027,data_grade_b,swe_senior_junior_ratio 2023 (P75/P25),1.6555,167540/101200=1.6555, MATCH,none,https://www.bls.gov/oes/2023/may/oes151252.htm
+ck028,data_grade_b,swe_senior_junior_ratio 2024 (P75/P25),1.6400,169000/103050=1.6400, MATCH,none,https://web.archive.org/web/20250403030556id_/https://www.bls.gov/oes/special-requests/oesm24nat.zip
+ck029,data_grade_b,swe_senior_junior_ratio 2025 (P75/P25),1.6346,171980/105210=1.6346, MATCH,none,https://web.archive.org/web/20260516122846id_/https://www.bls.gov/oes/special-requests/oesm25nat.zip
+ck030,data_random,nace_bachelors 2016,71916,71916 (2018 exec summary prior-year line),MATCH,none,https://web.archive.org/web/20240204071017/https://www.naceweb.org/uploadedfiles/files/2018/publication/executive-summary/2018-nace-salary-survey-summer-executive-summary.pdf
+ck031,data_random,nace_bachelors 2019,76986,76986 ("At $76986 ... 7.8 percent higher"),MATCH,none,http://web.archive.org/web/20211027063419/https://www.naceweb.org/uploadedfiles/files/2020/publication/executive-summary/2020-nace-salary-survey-summer-executive-summary.pdf
+ck032,data_random,nace_bachelors 2022,86964,86964 (Summer 2023 exec summary),MATCH,none,https://www.naceweb.org/docs/default-source/default-document-library/2023/publication/executive-summary/2023-nace-salary-survey-summer-executive-summary.pdf
+ck033,data_random,nace_bachelors 2024,88907,88907 ("2.7% lower than $91411"),MATCH,none,https://www.naceweb.org/docs/default-source/default-document-library/2025/publication/executive-summary/2025-nace-salary-survey-summer-executive-summary.pdf
+ck034,data_random,nace_bachelors 2025,91517,91517 ("climbed 2.9% to $91517"),MATCH,none,https://www.naceweb.org/job-market/compensation/starting-salaries-climb-for-the-class-of-2025
+ck035,data_random,indeed_software_postings 2020-02,99.97,99.97 (Hiring Lab total postings; Software Development),MATCH,none,https://www.hiringlab.org/ (indeed.csv)
+ck036,data_random,indeed_software_postings 2021-08,169.73,169.73 (Hiring Lab total postings),MATCH,none,https://www.hiringlab.org/ (indeed.csv)
+ck037,data_random,indeed_software_postings 2022-12,130.51,130.51 (Hiring Lab total postings),MATCH,none,https://www.hiringlab.org/ (indeed.csv)
+ck038,data_random,indeed_software_postings 2025-09,64.26,64.26 (Hiring Lab total postings),MATCH,none,https://www.hiringlab.org/ (indeed.csv)
+ck039,data_random,unemp_rate_comp series max monthly 2010-2025,6.5 (2010-03),6.5; 2020-2025 max only 4.6 (2020-08),MATCH,none,https://api.bls.gov/publicAPI/v2/timeseries/data/LNU04034021
+ck040,data_random,unemp_rate_comp 2025 annual + Dec,3.3 / 3.3,3.3 / 3.3 (Oct 2025 missing as noted),MATCH,none,https://api.bls.gov/publicAPI/v2/timeseries/data/LNU04034021
+ck041,data_random,grad_start_salary nyfed_cs 2024 (CS median early-career),87000,87000,MATCH,none,https://www.newyorkfed.org/medialibrary/research/interactives/data/college-labor-market/college-labor-outcomes-by-major-data.csv
+ck042,data_random,cs_degrees nces 2019 (AY2018-19 bachelor's),88638,88638,MATCH,none,https://nces.ed.gov/programs/digest/d23/tables/dt23_325.35.asp
+ck043,data_random,cs_degrees nces 2022 (AY2021-22 bachelor's; record used in req06),108503,108503,MATCH,none,https://nces.ed.gov/programs/digest/d23/tables/dt23_325.35.asp
+ck044,data_random,cs_degrees nces full series 2016-2022 (7 rows),64402/71416/79597/88638/97054/104883/108503,all 7 exact,MATCH,none,https://nces.ed.gov/programs/digest/d23/tables/dt23_325.35.asp
+ck045,data_random,h1b_junior_wage h1bdata_se 2022 (median base),130894,130894 (recomputed median of 41144 filings; n matches),MATCH,none,https://www.h1bdata.info/index.php?em=&job=software+engineer&year=2022
+ck046,data_random,h1b_senior_wage h1bdata_srse 2025 (median base),148221,148221 (recomputed median of 7585 filings; n matches),MATCH,none,https://www.h1bdata.info/index.php?em=&job=senior+software+engineer&year=2025
+ck047,data_random,junior_base payscale_entry 2025 (avg base),82998,82998; n=9912; updated 2025-05-05,MATCH,none,https://web.archive.org/web/20251008015334/https://www.payscale.com/research/US/Job=Software_Engineer/Salary/4fd947de/Entry-Level
+ck048,data_random,ai_tool_adoption_planned 2025 (SO using or planning),84,84,MATCH,none,https://survey.stackoverflow.co/2025/ai
+ck049,data_random,ai_tool_daily_copilot 2025 (prof devs daily),50.6,50.6 (weekly 17.4),MATCH,none,https://survey.stackoverflow.co/2025/ai
+ck050,data_random,senior_tc_bigtech levels_fyi_senior 2025,312587,312587 (+4.2% YoY),MATCH,none,https://www.levels.fyi/2025/report.md
+ck051,data_random,junior_tc_bigtech levels_fyi_entry 2025,155000,155000,MATCH,none,https://www.levels.fyi/2025/report.md
+ck052,data_random,swe_junior_tc_us 2024 (points.csv line 52),152500 per source,152000 recorded in points.csv (report.md shows 2024 = $152500),MISMATCH,minor,https://www.levels.fyi/2025/report.md
+ck053,data_random,swe_entry_bigtech_us 2025 (Google L3 wayback),184537,184537 (base 142393 + stock 33425 + bonus 8719),MATCH,none,https://web.archive.org/web/20251115143652/https://www.levels.fyi/companies/google/salaries/software-engineer/levels/l3
+ck054,data_random,swe_entry_topofmarket_us 2023 (Jane Street L1),325000,325000 (page: base salary $325000; 77% above national median),MATCH,none,https://www.levels.fyi/2023/
+ck055,data_random,swe_entry_topofmarket_us 2024 (Hudson River Trading L1),410000,not re-verifiable in current public tables (grade-C single-source),UNVERIFIABLE,minor,https://www.levels.fyi/2024/
+ck056,data_random,msft_fy25q3 copilot_users point,15000000 GitHub Copilot users,15M confirmed on Microsoft FY25 Q3 call page,MATCH,none,https://www.microsoft.com/en-us/investor/events/fy-2025/earnings-fy-2025-q3
+ck057,requirements,req01 real window min + 5% threshold,101731 real min (2018); 96000 = 5% below,min confirmed; 96000 is 5.6% below (exact 5% = 96644),MISMATCH,minor,local recompute (cpi.csv CPIAUCSL base 2025)
+ck058,requirements,req02 real window min + 10% threshold,82998 real min (2025); 74000 = 10% below,min confirmed; 74000 is 10.8% below (exact 10% = 74698),MISMATCH,minor,local recompute (cpi.csv CPIAUCSL base 2025)
+ck059,requirements,req03 real window min 129831 (2024); 123000 = 5% below,123339 exact 5%,123339 recomputed; 123000 correct rounding,MATCH,none,local recompute (cpi.csv)
+ck060,requirements,req04 real window min 133681 (2024),127000 = 5% below,127997 exact 5%; 127000 correct rounding,MATCH,none,local recompute (cpi.csv)
+ck061,requirements,req05 ratio ceiling 1.67 / floor 1.63; 1.75 = 5% above,1.7556 exact 5% above 1.6723,"max 1.6723, min 1.6346 confirmed; 1.75 correct rounding",MATCH,none,local recompute from OEWS components
+ck062,requirements,req06 record 108503 (2022); 113900 = 5% above,113928 exact,113928 -> 113900,MATCH,none,local recompute
+ck063,requirements,req07 series max 6.5 (2010-03); 6.8 = 5% above,6.825 exact,6.825 -> 6.8; series max 6.5 confirmed via BLS API,MATCH,none,https://api.bls.gov/publicAPI/v2/timeseries/data/LNU04034021
+ck064,requirements,req08 real max 420801 (2024); 441800 = 5% above,441841 exact,441841 -> 441800,MATCH,none,local recompute (cpi.csv)
+ck065,events,ev03 status (wage-weighted H-1B selection),status should reflect final rule in force since 2026-02-27,recorded status=proposed; 90 FR 60864 is a FINAL rule (pub. 2025-12-29; effective 2026-02-27; in force 7+ months at run date),MISMATCH,fatal,https://www.federalregister.gov/documents/2025/12/29/2025-23853/weighted-selection-process-for-registrants-and-petitioners-seeking-to-file-cap-subject-h-1b
+ck066,events,ev02 NPRM fee amount/status/date,proposed $103265 NPRM 2026-08-25,"Confirmed: Proposed Rule 91 FR 54817; $103265; comments closed 2026-09-24; not final as of run date",MATCH,none,https://www.federalregister.gov/documents/2026/08/25/2026-17324/fee-for-certain-h-1b-petitions
+ck067,events,ev01 source URL ($100000 payment FAQ),URL live and content matches,resolves; confirms $100k payment for new petitions after 2025-09-21,MATCH,none,https://www.whitehouse.gov/releases/2025/09/h-1b-faq/
+ck068,events,ev01 litigation posture (D. Mass. vacatur 2026-06-08; 1st Cir. stay denial 2026-07-24),dates and posture as recorded,"Confirmed: vacatur 2026-06-08; First Circuit denied stay 2026-07-24 (USCIS FAQ states it explicitly)",MATCH,none,https://www.uscis.gov/newsroom/alerts/h-1b-faq
+ck069,events,ev01 note: proclamation extended Sep 2026 through 2027-09-21,extension exists,"Proclamation 11069 of 2026-09-18 (91 FR 60497) extends fee regime an additional year; exact end date not re-read",MATCH,minor,https://www.federalregister.gov/documents/2026/09/23/2026-19554/restriction-on-entry-of-certain-nonimmigrant-workers
+ck070,events,ev01 description "stays in force" vs current posture,should not say in force while vacatur stands,"payment vacated nationwide and stay denied as of run date; note field is correct but description/status=enacted is stale",MISMATCH,minor,https://www.uscis.gov/newsroom/alerts/h-1b-faq
+ck071,events,ev04 WA HB 1155 effective 2027-06-30 (notices 2027-10-01),enacted; effective 2027-06-30,"Signed 2026-03-23 (Ch. 149 2026 Laws); effective 6/30/2027; voids existing non-competes; Oct 2027 notices",MATCH,none,https://app.leg.wa.gov/billsummary?BillNumber=1155&Year=2026
+ck072,events,ev05 first EU 150+ pay-gap reports due 2027-06-07; transposition 2026-06-07 (only 4 member states),dates and 4-state claim,"Art. 9: 150+ employers report by 7 June 2027 (250+ annually); transposition 7 June 2026; only 4 states (IT/SK/LT/MT) met it",MATCH,none,https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023L0970
+ck073,events,ev06 Colorado SB26-189 effective 2027-01-01 (ADMT in hiring),enacted; effective 2027-01-01,"Signed 2026-05-14; effective 1/1/2027; repeals/re-enacts 2024 AI Act as ADMT law; event URL is generic CDLE page not the bill",MATCH,minor,https://leg.colorado.gov/bills/sb26-189
+ck074,judgments,jud01 probability pairs p_5y/p_10y = 0.5/0.65,round-2 means of A2 (55/70) and B2 (45/60),means 50/65 confirmed; feasibility.csv jud01 path hits 0.50@5y and 0.65@10y (column semantics verified),MATCH,none,local file check (idea_A2.md / idea_B2.md / feasibility.csv)
+ck075,judgments,jud02 SO using-or-planning series 70/76/84 (2023-2025),70/76/84,70 (2023) 76 (2024) 84 (2025) all confirmed,MATCH,none,https://survey.stackoverflow.co/2025/ai
+ck076,judgments,jud03 LEAP panel median 7.0% (2030) and 7.8% (2040),7.0 / 7.8,"7.0% by end-2030 and 7.8% by end-2040 exactly as cited; baseline 7% (May 2025), down from 15% (2019)",MATCH,none,https://leap.forecastingresearch.org/forecasts/entry-level-tech-hiring
+ck077,judgments,jud03 superforecasters 8% (2030) / 10% (2040),8 / 10,superforecasters 8% (2030) 10% (2040) confirmed,MATCH,none,https://leap.forecastingresearch.org/forecasts/entry-level-tech-hiring
+ck078,judgments,jud04 ~4.4% represented (computer and mathematical occupations; BLS Union Members 2025),4.4,4.4 (285k represented of 6517k; 3.7% members),MATCH,none,https://www.bls.gov/news.release/union2.t03.htm
+ck079,judgments,rd01 current TRL 7 (agents in real environments; drop-in-junior promise abandoned),TRL 7 defensible; note transparent,"Cognition/Devin page confirms commercial coding agents but only a thin stub; TRL 7 (prototype in operational env) defensible; note concedes drop-in-junior unproven",MATCH,minor,https://en.wikipedia.org/wiki/Cognition_AI
+ck080,meta,cpi.csv 2025 base-year average,12 months of CPIAUCSL 2025,only 11 months present (Dec 2025 absent); small upward bias in all real 2025-base values,MISMATCH,minor,local file check (cpi.csv)
+ck081,meta,cpi.csv 2026 partial-year treatment,consistent partial-year handling,9 months (Jan-Sep 2026) present and used consistently; disclosed in file,MATCH,none,local file check (cpi.csv)
+ck082,meta,forecasts.csv units (real 2025 USD),real 2025 USD (deflated medians),medians consistent with last real value x series annual change; no nominal/real contradiction found,MATCH,none,local file check (forecasts.csv)
+ck083,meta,p_now/p_5y/p_10y column semantics for 2030/2035 pairs,2030 in p_5y; 2035 in p_10y,"trend_predictor.py L700-704 + feasibility.csv confirm placement; no column-shift bug",MATCH,none,local file check (trend_predictor.py / feasibility.csv)
+ck084,meta,idea_A2/B2 judgment means (J1 50/65; J2 50/60; J3 25/35; J4 30/40),round-2 means,"A2 (55/70,50/60,25/35,30/40) and B2 (45/60,50/60,25/35,30/40) average to recorded pairs",MATCH,none,local file check (idea_A2.md / idea_B2.md)

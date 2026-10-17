@@ -101,6 +101,7 @@ A project is feasible when the things it depends on are cheap enough, good enoug
 | **Plausible** | Joint ≥ 35% |
 | **Long shot** | Joint ≥ 12% |
 | **Unlikely** | Joint < 12% |
+| **Uncertain** | Overrides the above when the weakest requirement rests on weak evidence: a grade C/D curve, or a probability the run's own agents estimated. The score is kept as "if the inputs hold" |
 
 **Deliverables**
 
@@ -115,9 +116,10 @@ Every test suite runs offline, and its output is committed in [`tests/results/`]
 | Suite | What it checks | Result |
 |---|---|---|
 | [`test_engine`](tests/results/test_engine.txt) | Calibration on 60 simulated technologies; end-to-end forecast, feasibility, charts, workbook | 13 / 13 |
-| [`test_edge_cases`](tests/results/test_edge_cases.txt) | Inflation, bad rows, mixed date formats, gaps, physical limits, mixed products, missing files, overrides | 34 / 34 |
+| [`test_edge_cases`](tests/results/test_edge_cases.txt) | Inflation, bad rows, mixed date formats, gaps, physical limits, mixed products, missing files, overrides, the uncertain-verdict rule | 39 / 39 |
 | [`test_autofix`](tests/results/test_autofix.txt) | The automatic repairs stay out of the way on clean data and help on real trend changes and outliers | 7 / 7 |
 | [`test_real_data`](tests/results/test_real_data.txt) | Backtest on real, sourced data | 12 / 12 |
+| [`test_real_run`](tests/results/test_real_run.txt) | Re-scores a real run made by a free model (MiMo V2.6 Flash): probabilities reproduced exactly, weak-evidence verdicts become Uncertain | 23 / 23 |
 
 What the numbers say, without spin:
 
@@ -125,9 +127,11 @@ What the numbers say, without spin:
 - **Repairs.** On clean data they trigger for 1–3% of series and leave accuracy unchanged. On a real slowdown they trigger in about half the cases and cut forecast error by 20–37%. When a slowdown is buried in heavy noise, they mostly don't trigger, because the data can't tell it apart from chance.
 - **Real data** ([example](examples/backtest-predictive-maintenance)): wage forecasts made from 2013–2017 were within about 3% of what happened. Forecasts made from 2019 missed 2020–2023, when the COVID jump and then inflation moved real wages. An 80% range is supposed to miss about 1 time in 5, and no trend model foresees a shock. For noisy GPU launch prices and a thermal-camera series that mixes product types, the engine correctly refuses to give an informative 10-year forecast and asks for denser data.
 
-## Example
+## Examples
 
-A backtest on the sourced data from PARADIGMA's predictive-maintenance run is in [`examples/backtest-predictive-maintenance`](examples/backtest-predictive-maintenance). It stands in 2013, 2015, 2017 and 2019, forecasts with only the data available then, and compares with what actually happened. Every forecast, range and error is in `output/backtest.csv`.
+**A real run on a free model.** [`examples/mimo-scan-swe-salaries`](examples/mimo-scan-swe-salaries) is a full scan of US software-engineering pay made by MiMo V2.6 Flash in OpenCode, with a review. The data work and verification held up (92% of 84 checks matched). Two of its three project verdicts rested on probabilities its own agents made up, and it quoted better calibration numbers than its own files show. The engine now marks such verdicts Uncertain, and the instructions now require calibration to be quoted verbatim.
+
+**A backtest.** A backtest on the sourced data from PARADIGMA's predictive-maintenance run is in [`examples/backtest-predictive-maintenance`](examples/backtest-predictive-maintenance). It stands in 2013, 2015, 2017 and 2019, forecasts with only the data available then, and compares with what actually happened. Every forecast, range and error is in `output/backtest.csv`.
 
 ## Install
 
@@ -302,7 +306,7 @@ Every source is free. The report says where paid databases would add more.
 - **It needs data.** Series with fewer than 5 yearly changes get no forecast, and noisy ones are reported as uninformative. Most fields have only a few good long series.
 - **Shocks aren't foreseen.** A pandemic, a war or a sudden policy change moves values outside the ranges. The ranges account for typical surprises, not every surprise.
 - **Some numbers are judgment.** Event, readiness and widening defaults are labelled and tunable.
-- **Status: v0.1, experimental.** Tested on simulated data and one real backtest. No full real project run has been published yet.
+- **Status: v0.2, experimental.** Tested on simulated data, one real backtest and one full real run (on a free model), published with its review.
 
 ## FAQ
 
@@ -328,7 +332,7 @@ trend-predictor-skill/
 │   └── scripts/trend_predictor.py   engine (cpi, hindcast, forecast, feasibility, workbook)
 ├── tests/                       four offline suites + run_all.sh
 │   └── results/                 committed output of the last run (SUMMARY.md)
-├── examples/                    backtest on real, sourced data
+├── examples/                    backtest on real data + a reviewed real run on a free model
 ├── docs/research.md             the research behind the method, with sources
 ├── dist/trend-predictor.zip     ready-to-upload skill for Claude apps (tools/package.sh)
 ├── tools/                       make_assets.py (README artwork), package.sh (rebuilds the ZIP)

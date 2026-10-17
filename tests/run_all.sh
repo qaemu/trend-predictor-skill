@@ -12,7 +12,7 @@ status=0
   echo "| Suite | What it checks | Passed | Failed |"
   echo "|---|---|---|---|"
 } > tests/results/SUMMARY.md
-for t in test_engine test_edge_cases test_autofix test_real_data; do
+for t in test_engine test_edge_cases test_autofix test_real_data test_real_run; do
   python3 "tests/$t.py" > "tests/results/$t.txt" 2>&1 || status=1
   sed -i -E 's#/tmp/[A-Za-z0-9_]+#<tmpdir>#g' "tests/results/$t.txt"
   pass=$(grep -c '^PASS' "tests/results/$t.txt" || true)
@@ -22,6 +22,7 @@ for t in test_engine test_edge_cases test_autofix test_real_data; do
     test_edge_cases) what="Inflation, bad rows, mixed date formats, gaps, limits, mixed products, missing files, overrides";;
     test_autofix) what="Repairs stay out of the way on clean data and help on real breaks and outliers";;
     test_real_data) what="Backtest on sourced data (wages, GPU prices, thermal imagers)";;
+    test_real_run) what="Re-scores a real MiMo V2.6 Flash scan run: probabilities reproduced, weak-evidence verdicts become UNCERTAIN";;
   esac
 
   echo "| [\`$t\`]($t.txt) | $what | $pass | $fail |" >> tests/results/SUMMARY.md

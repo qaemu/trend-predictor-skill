@@ -1,0 +1,17 @@
+constraint_id,tier,n,cover80,cover95,bias_log,verdict
+cs_degrees,nces_digest,1,0.0,0.0,-0.064,too few checks
+grad_start_salary,nace_bachelors,10,0.9,1.0,-0.029,calibrated
+h1b_senior_wage,h1bdata_srse,1,1.0,1.0,0.028,too few checks
+junior_base,payscale_entry,6,1.0,1.0,-0.015,too few checks
+senior_base,payscale_srse,10,0.6,0.9,-0.039,bands too narrow: widen (volatility_multiplier) or distrust
+swe_entry_bigtech_us,bigtech-junior,1,1.0,1.0,-0.058,too few checks
+swe_junior_salary,junior,10,1.0,1.0,-0.029,bands wide (conservative)
+swe_median_salary,median,10,0.8,1.0,-0.046,calibrated
+swe_senior_junior_ratio,ratio,10,1.0,1.0,-0.013,bands wide (conservative)
+swe_senior_plus_salary,staff,10,0.8,0.9,0.032,calibrated
+swe_senior_salary,senior,10,1.0,1.0,-0.042,bands wide (conservative)
+unemp_rate_comp,bls_cps,55,0.582,0.927,0.496,"biased: past forecasts were too optimistic (x1.64); the trend changed, refit on recent years"
+wage_oes_median,bls_oes,10,0.8,1.0,-0.046,calibrated
+wage_oes_p10,bls_oes,10,1.0,1.0,0.04,bands wide (conservative)
+wage_oes_p90,bls_oes,10,0.8,0.9,0.033,calibrated
+ALL,pooled,164,0.774,0.951,0.157,calibrated

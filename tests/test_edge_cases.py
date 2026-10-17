@@ -147,6 +147,31 @@ def main():
     check("unscored critical requirement -> 'incomplete', not a fake verdict",
           ps.status.astype(str).str.startswith("incomplete").any() and ps.get("verdict", pd.Series(dtype=str)).isna().all())
 
+    # UNCERTAIN rule: a verdict cannot rest on weak evidence
+    d3 = tempfile.mkdtemp()
+    pts([r for r in rows if r["constraint_id"] in ("E3", "E7")]).to_csv(os.path.join(d3, "points.csv"), index=False)
+    base = dict(kind="judgment", critical="yes", p_5y=0.3, p_10y=0.4)
+    cases = {
+        "idea": [dict(req_id="J1", description="idea agents", source_url="IDEA-agents (no external forecast found)", **base),
+                 dict(req_id="J2", description="sure thing", source_url="https://x", p_5y=0.95, p_10y=0.99, kind="judgment", critical="yes")],
+        "external": [dict(req_id="J1", description="crowd forecast", source_url="https://metaculus.example/q/1", **base)],
+        "override_high": [dict(req_id="J1", description="idea but expert-checked", source_url="IDEA-agents", evidence_grade="High", **base)],
+        "noisy_curve": [dict(req_id="C1", description="noisy curve weakest", kind="curve", constraint_id="E7", target_value=0.01, critical="yes"),
+                        dict(req_id="J2", description="sure thing", source_url="https://x", p_5y=0.99, p_10y=0.99, kind="judgment", critical="yes")],
+    }
+    res = {}
+    for k, reqs in cases.items():
+        pd.DataFrame(reqs).to_csv(os.path.join(d3, f"req_{k}.csv"), index=False)
+        od = os.path.join(d3, k)
+        run(["feasibility", "--end", "2025", "--cpi", "", "--requirements", f"req_{k}.csv", "--outdir", od], d3)
+        ps = pd.read_csv(os.path.join(od, "project_score.csv"))
+        res[k] = ps[ps.horizon_years.astype(str) == "10"].iloc[0]
+    check("UNCERTAIN when weakest link is an IDEA-agent judgment", str(res["idea"].verdict).startswith("UNCERTAIN"), res["idea"].verdict)
+    check("UNCERTAIN keeps the score in verdict_if_inputs_hold", res["idea"].verdict_if_inputs_hold in ("PLAUSIBLE", "LONG SHOT", "UNLIKELY"))
+    check("externally sourced judgment is Medium -> verdict not UNCERTAIN", not str(res["external"].verdict).startswith("UNCERTAIN"), res["external"].verdict)
+    check("explicit evidence_grade=High overrides the inference", not str(res["override_high"].verdict).startswith("UNCERTAIN"), res["override_high"].verdict)
+    check("UNCERTAIN when weakest link is an uninformative (grade C) curve", str(res["noisy_curve"].verdict).startswith("UNCERTAIN") and res["noisy_curve"].weakest_evidence == "C", res["noisy_curve"].verdict)
+
     # theilsen option, missing constraints.csv, workbook with missing files
     d2 = tempfile.mkdtemp()
     pts([r for r in rows if r["constraint_id"] == "E3"]).to_csv(os.path.join(d2, "points.csv"), index=False)

@@ -18,10 +18,10 @@ R2      0.889  0.920                   NaN
 R3      0.661  0.942                   NaN
 R4      0.500  0.800                   NaN
 R5      0.000  0.000                2049.7
-horizon_years   year  joint_if_independent  weakest_link_bound weakest_requirement   verdict                                       status
-            5 2030.0                 0.000               0.001                  R1  UNLIKELY                                          NaN
-           10 2035.0                 0.305               0.440                  R1 LONG SHOT                                          NaN
- start-window    NaN                   NaN                 NaN                 NaN       NaN P(all critical met) stays < 0.5 through 2035
+horizon_years   year  joint_if_independent  weakest_link_bound weakest_requirement weakest_evidence   verdict verdict_if_inputs_hold                                       status
+            5 2030.0                 0.000               0.001                  R1                A  UNLIKELY               UNLIKELY                                          NaN
+           10 2035.0                 0.305               0.440                  R1                A LONG SHOT              LONG SHOT                                          NaN
+ start-window    NaN                   NaN                 NaN                 NaN              NaN       NaN                    NaN P(all critical met) stays < 0.5 through 2035
 PASS workbook written
 
 ALL TESTS PASSED

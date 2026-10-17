@@ -1,6 +1,6 @@
 {
   "name": "trend-predictor",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Project the constraints a project depends on 5 and 10 years ahead with calibrated ranges, and score how likely it is to be feasible, its weakest link and when to start building.",
   "author": {
     "name": "qaemu"

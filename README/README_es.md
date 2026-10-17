@@ -101,6 +101,7 @@ Un proyecto es factible cuando aquello de lo que depende es lo bastante barato, 
 | **Plausible** | Conjunta ≥ 35% |
 | **Apuesta lejana** | Conjunta ≥ 12% |
 | **Improbable** | Conjunta < 12% |
+| **Incierto** | Reemplaza a los anteriores cuando el requisito más débil se apoya en evidencia débil: una curva de grado C/D, o una probabilidad estimada por los propios agentes de la corrida. El puntaje se conserva como "si los datos se sostienen" |
 
 **Entregables**
 
@@ -115,9 +116,10 @@ Cada conjunto de pruebas corre sin conexión, y su salida está guardada en [`te
 | Conjunto | Qué prueba | Resultado |
 |---|---|---|
 | [`test_engine`](../tests/results/test_engine.txt) | Calibración en 60 tecnologías simuladas; pronóstico, factibilidad, gráficos y planilla de punta a punta | 13 / 13 |
-| [`test_edge_cases`](../tests/results/test_edge_cases.txt) | Inflación, filas malas, formatos de fecha mezclados, huecos, límites físicos, productos mezclados, archivos faltantes, ajustes manuales | 34 / 34 |
+| [`test_edge_cases`](../tests/results/test_edge_cases.txt) | Inflación, filas malas, formatos de fecha mezclados, huecos, límites físicos, productos mezclados, archivos faltantes, ajustes manuales, la regla del veredicto incierto | 39 / 39 |
 | [`test_autofix`](../tests/results/test_autofix.txt) | Las reparaciones automáticas no molestan con datos limpios y ayudan ante cambios de tendencia y valores atípicos reales | 7 / 7 |
 | [`test_real_data`](../tests/results/test_real_data.txt) | Prueba retrospectiva con datos reales y con fuente | 12 / 12 |
+| [`test_real_run`](../tests/results/test_real_run.txt) | Repuntúa una corrida real hecha por un modelo gratuito (MiMo V2.6 Flash): probabilidades reproducidas exactas, los veredictos con evidencia débil pasan a Incierto | 23 / 23 |
 
 Lo que dicen los números, sin maquillaje:
 
@@ -125,9 +127,11 @@ Lo que dicen los números, sin maquillaje:
 - **Reparaciones.** Con datos limpios se activan en el 1–3% de las series y no cambian la precisión. Ante una desaceleración real se activan en cerca de la mitad de los casos y bajan el error del pronóstico entre 20 y 37%. Cuando la desaceleración está tapada por mucho ruido, casi nunca se activan, porque los datos no la distinguen del azar.
 - **Datos reales** ([ejemplo](../examples/backtest-predictive-maintenance)): los pronósticos de salarios hechos desde 2013–2017 quedaron a un 3% de lo que pasó. Los hechos desde 2019 fallaron en 2020–2023, cuando el salto del COVID y después la inflación movieron los salarios reales. Un rango del 80% debería fallar más o menos 1 de cada 5 veces, y ningún modelo de tendencia anticipa un shock. Con precios de lanzamiento de GPU ruidosos y una serie de cámaras térmicas que mezcla tipos de producto, el motor se niega con razón a dar un pronóstico informativo a 10 años y pide datos más densos.
 
-## Ejemplo
+## Ejemplos
 
-Hay una prueba retrospectiva con los datos con fuente de la corrida de mantenimiento predictivo de PARADIGMA en [`examples/backtest-predictive-maintenance`](../examples/backtest-predictive-maintenance). Se para en 2013, 2015, 2017 y 2019, pronostica solo con los datos disponibles en ese momento y compara con lo que pasó de verdad. Cada pronóstico, rango y error está en `output/backtest.csv`.
+**Una corrida real con un modelo gratuito.** [`examples/mimo-scan-swe-salaries`](../examples/mimo-scan-swe-salaries) es un escaneo completo de salarios de ingeniería de software en EE. UU. hecho por MiMo V2.6 Flash en OpenCode, con su revisión. La recolección de datos y la verificación se sostuvieron (92% de 84 controles coincidieron). Dos de sus tres veredictos de proyecto se apoyaban en probabilidades inventadas por sus propios agentes, y citó una calibración mejor que la de sus propios archivos. Ahora el motor marca esos veredictos como Inciertos, y las instrucciones exigen citar la calibración tal cual.
+
+**Una prueba retrospectiva.** Hay una prueba retrospectiva con los datos con fuente de la corrida de mantenimiento predictivo de PARADIGMA en [`examples/backtest-predictive-maintenance`](../examples/backtest-predictive-maintenance). Se para en 2013, 2015, 2017 y 2019, pronostica solo con los datos disponibles en ese momento y compara con lo que pasó de verdad. Cada pronóstico, rango y error está en `output/backtest.csv`.
 
 ## Instalación
 
@@ -302,7 +306,7 @@ Todas las fuentes son gratuitas. El informe indica dónde agregarían más las b
 - **Necesita datos.** Las series con menos de 5 cambios anuales no reciben pronóstico, y las ruidosas se informan como no informativas. La mayoría de los campos tienen pocas series largas y buenas.
 - **No anticipa shocks.** Una pandemia, una guerra o un cambio de política repentino sacan los valores de los rangos. Los rangos cubren sorpresas típicas, no todas.
 - **Algunos números son de criterio.** Los supuestos de eventos, madurez y ensanche están marcados y se pueden ajustar.
-- **Estado: v0.1, experimental.** Probado con datos simulados y una prueba retrospectiva real. Todavía no hay publicada una corrida completa sobre un proyecto real.
+- **Estado: v0.2, experimental.** Probado con datos simulados, una prueba retrospectiva real y una corrida real completa (con un modelo gratuito), publicada con su revisión.
 
 ## Preguntas frecuentes
 
@@ -328,7 +332,7 @@ trend-predictor-skill/
 │   └── scripts/trend_predictor.py   motor (cpi, hindcast, forecast, feasibility, workbook)
 ├── tests/                       cuatro conjuntos sin conexión + run_all.sh
 │   └── results/                 salida guardada de la última corrida (SUMMARY.md)
-├── examples/                    prueba retrospectiva con datos reales y con fuente
+├── examples/                    prueba retrospectiva con datos reales + una corrida real revisada con un modelo gratuito
 ├── docs/research.md             la investigación detrás del método, con fuentes
 ├── dist/trend-predictor.zip     skill lista para subir a las apps de Claude (tools/package.sh)
 ├── tools/                       make_assets.py (gráficos del README), package.sh (rearma el ZIP)

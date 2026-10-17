@@ -1,0 +1,6 @@
+constraint_id,tier,scenario,annual_change_pct,volatility_multiplier,source_url,note
+junior_base,payscale_entry,stall,0,,https://www.payscale.com/research/US/Job=Software_Engineer/Salary/4fd947de/Entry-Level,"Constructed sensitivity, not a published forecast: the verified real decline stops (rate 0) rather than continuing."
+swe_junior_salary,junior,stall,0,,https://www.bls.gov/oes/special-requests/oesm25nat.zip,Constructed sensitivity: real entry wage stops moving in either direction.
+h1b_junior_wage,h1bdata_se,stall,0,,https://www.h1bdata.info/,Constructed sensitivity: listed H-1B junior wage stops deflating (e.g. prevailing-wage floor holds it up).
+cs_degrees,nces_digest,stall,0,,https://nces.ed.gov/programs/digest/d23/tables/dt23_325.35.asp,Constructed sensitivity: cohort stops growing (plausible if enrolment reacts to weak entry hiring; NCES series stops at 2022).
+senior_base,payscale_srse,stall,0,,https://www.payscale.com/research/US/Job=Senior_Software_Engineer/Salary,Constructed sensitivity: senior base stops declining in real terms.

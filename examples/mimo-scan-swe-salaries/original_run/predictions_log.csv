@@ -1,0 +1,15 @@
+claim_id,run_date,claim,metric,threshold,resolve_date,probability,resolved_value,outcome,brier,source
+tp01,2026-10-17,"Reported junior base salary is at most $74,000 in real 2025 USD",payscale_entry real,<=74000,2031-01-31,0.414,,,,https://www.payscale.com/research/US/Job=Software_Engineer/Salary/4fd947de/Entry-Level
+tp02,2026-10-17,"BLS software-developer P25 wage is at most $96,000 in real 2025 USD",swe_junior_salary real,<=96000,2036-01-31,0.105,,,,https://www.bls.gov/oes/special-requests/oesm25nat.zip
+tp03,2026-10-17,BLS P75/P25 pay ratio is at or above 1.75,swe_senior_junior_ratio,>=1.75,2036-01-31,0.032,,,,https://www.bls.gov/oes/special-requests/oesm25nat.zip
+tp04,2026-10-17,"CS bachelor degrees conferred exceed 113,900 in a single year",cs_degrees,>113900,2031-01-31,0.995,,,,https://nces.ed.gov/programs/digest/d23/tables/dt23_325.35.asp
+tp05,2026-10-17,Indeed US software-development postings index prints >=100 at year-end 2030,postings_index,>=100,2031-01-31,0.50,,,,https://raw.githubusercontent.com/hiring-lab/job_postings_tracker/master/US/job_postings_by_sector_US.csv
+tp06,2026-10-17,Stack Overflow reports >=90% of developers using or planning to use AI tools,so_ai_adoption,>=90,2031-01-31,0.50,,,,https://survey.stackoverflow.co/
+tp07,2026-10-17,New-grad share of big-tech hires is >=10%,signalfire_newgrad_share,>=10,2031-01-31,0.25,,,,https://leap.forecastingresearch.org/forecasts/entry-level-tech-hiring
+tp08,2026-10-17,BLS shows >=3% of SOC 15-1252 software developers represented by a union,cps_represented_share,>=3,2031-01-31,0.30,,,,https://www.bls.gov/news.release/union2.nr0.htm
+tp09,2026-10-17,"The H-1B $100,000 payment requirement is still in force",h1b_fee_status,in_force,2031-01-31,0.65,,,,https://www.federalregister.gov/documents/search?conditions%5Bterm%5D=H-1B%20fee
+tp10,2026-10-17,Washington HB 1155 is in force by 2027-06-30,wa_hb1155,in_force,2027-07-31,0.92,,,,https://app.leg.wa.gov/billsummary?BillNumber=1155
+tp11,2026-10-17,"H-1B junior listed wage is at most $127,000 in real 2025 USD at 2030",h1b_junior_wage real,<=127000,2031-01-31,0.594,,,,https://www.h1bdata.info/
+tp12,2026-10-17,Computer/mathematical unemployment reaches 6.8% at any point by 2035,unemp_rate_comp,>=6.8,2036-01-31,0.203,,,,https://api.bls.gov/publicAPI/v2/timeseries/data/LNU04034021
+tp13,2026-10-17,An autonomous coding agent is demonstrated at TRL 9 as a drop-in entry-level engineer,trl_readiness,TRL9,2031-01-31,0.991,,,,https://en.wikipedia.org/wiki/Cognition_AI
+tp14,2026-10-17,"Reported senior base salary is at most $123,000 in real 2025 USD at 2035",senior_base real,<=123000,2036-01-31,0.502,,,,https://www.payscale.com/research/US/Job=Senior_Software_Engineer/Salary

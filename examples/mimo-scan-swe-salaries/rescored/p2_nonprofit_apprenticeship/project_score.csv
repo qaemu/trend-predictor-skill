@@ -1,0 +1,4 @@
+horizon_years,year,joint_if_independent,weakest_link_bound,weakest_requirement,weakest_evidence,verdict,verdict_if_inputs_hold,status,joint_path
+5,2030,0.125,0.25,jud03,Medium,LONG SHOT,LONG SHOT,,
+10,2035,0.227,0.35,jud03,Medium,LONG SHOT,LONG SHOT,,
+start-window,,,,,,,,P(all critical met) stays < 0.5 through 2035,"{""2025"": 0.0, ""2026"": 0.005, ""2027"": 0.02, ""2028"": 0.045, ""2029"": 0.08, ""2030"": 0.125, ""2031"": 0.143, ""2032"": 0.162, ""2033"": 0.183, ""2034"": 0.205, ""2035"": 0.227}"

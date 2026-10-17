@@ -1,0 +1,9 @@
+run,horizon,joint,weakest,evidence,mimo_verdict,engine_verdict
+scan,+5y,0.062,jud03,Medium,UNLIKELY,UNLIKELY
+scan,+10y,0.136,jud03,Medium,LONG SHOT,LONG SHOT
+p1_entry_band_benchmarking,+5y,0.423,jud01,Low,PLAUSIBLE,UNCERTAIN (driven by jud01: evidence grade Low)
+p1_entry_band_benchmarking,+10y,0.55,jud01,Low,PLAUSIBLE,UNCERTAIN (driven by jud01: evidence grade Low)
+p2_nonprofit_apprenticeship,+5y,0.125,jud03,Medium,LONG SHOT,LONG SHOT
+p2_nonprofit_apprenticeship,+10y,0.227,jud03,Medium,LONG SHOT,LONG SHOT
+p3_junior_plus_ai_staffing,+5y,0.205,req02,C,LONG SHOT,UNCERTAIN (driven by req02: evidence grade C)
+p3_junior_plus_ai_staffing,+10y,0.382,jud02,Low,PLAUSIBLE,UNCERTAIN (driven by jud02: evidence grade Low)

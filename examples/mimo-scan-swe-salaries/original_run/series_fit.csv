@@ -1,0 +1,29 @@
+constraint_id,tier,first_year,last_year,n_years,n_points,n_sources,status,grade,aggregation,fit_window,model,fixes_applied,drift_method,annual_change_pct,volatility_K,m_years,theta,years_since_last_data,break_check,within_year_spread_x,hindcast_verdict_default_model,floor,ceiling,range80_width_x_at_max_horizon,informative,unresolved_warnings
+ai_tool_adoption_planned,stackoverflow_survey_using_or_planning,2023,2025,3,3,3,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+ai_tool_adoption_prof,stackoverflow_survey_prof_using,2023,2024,2,2,2,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+ai_tool_daily_copilot,copilot_paid_subscribers,2024,2024,1,1,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+ai_tool_daily_copilot,copilot_users,2025,2025,1,1,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+ai_tool_daily_copilot,stackoverflow_survey_prof_daily,2025,2025,1,1,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+cs_degrees,nces_digest,2016,2022,7,7,1,ok,C,median,all,log trend,none needed,endpoint,9.08,0.0285,6.0,0.63,3.0,none detected,1.0,too few checks,,,2.0,yes,
+grad_start_salary,nace_bachelors,2016,2025,10,10,8,ok,B,median,all,log trend,none needed,endpoint,-0.58,0.0364,9.0,0.63,0.0,none detected,1.0,calibrated,,,1.9,yes,
+grad_start_salary,nyfed_cs,2024,2024,1,1,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+h1b_junior_wage,h1bdata_se,2019,2025,6,6,6,ok,C,median,all,log trend,none needed,endpoint,-1.88,0.0266,6.0,0.63,0.0,none detected,1.0,not run,,,1.7,yes,
+h1b_senior_wage,h1bdata_srse,2019,2025,7,7,7,ok,C,median,all,log trend,none needed,endpoint,-1.0,0.0311,6.0,0.63,0.0,none detected,1.0,too few checks,,,1.9,yes,
+junior_base,payscale_entry,2016,2025,9,9,1,ok,C,median,all,log trend,none needed,endpoint,-1.79,0.0299,9.0,0.63,0.0,none detected,1.0,too few checks,,,1.7,yes,
+junior_tc_bigtech,levels_fyi_entry,2024,2025,2,2,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+postings_index,indeed_hiringlab,2020,2025,6,77,1,ok,C,median,all,log trend,none needed,endpoint,-3.33,0.5644,5.0,0.63,0.0,none detected,1.61,not run,,,226154.0,NO: 80% range > 100x even after fixes; needs denser data,uninformative
+senior_base,payscale_srse,2016,2025,10,10,2,ok,C,median,all,log trend,none needed,endpoint,-0.6,0.0251,9.0,0.63,0.0,none detected,1.0,bands too narrow: widen (volatility_multiplier) or distrust,,,1.5,yes,hindcast biased
+senior_tc_bigtech,levels_fyi_senior,2024,2025,2,2,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+swe_entry_bigtech_us,bigtech-junior,2019,2025,7,7,7,ok,C,median,all,log trend,none needed,endpoint,-4.15,0.0624,6.0,0.63,0.0,none detected,1.0,too few checks,,,3.5,yes,
+swe_entry_topofmarket_us,topofmarket-entry,2019,2024,6,6,6,ok,C,median,all,log trend,none needed,endpoint,7.38,0.0941,5.0,0.63,1.0,none detected,1.0,not run,,,9.3,yes,
+swe_junior_salary,junior,2016,2025,10,10,10,ok,C,median,all,log trend,none needed,endpoint,0.33,0.015,9.0,0.63,0.0,trend changed between halves,1.0,bands wide (conservative),,,1.3,yes,trend changed
+swe_junior_tc_us,junior-tc,2024,2025,2,2,1,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+swe_median_salary,median,2016,2025,10,10,10,ok,C,median,all,log trend,none needed,endpoint,0.14,0.0218,9.0,0.63,0.0,trend changed between halves,1.0,calibrated,,,1.4,yes,trend changed
+swe_senior_junior_ratio,ratio,2016,2025,10,10,10,ok,B,median,all,log trend,none needed,endpoint,-0.21,0.0069,9.0,0.63,0.0,none detected,1.0,bands wide (conservative),,,1.1,yes,
+swe_senior_plus_salary,staff,2016,2025,10,10,10,ok,B,median,all,log trend,none needed,endpoint,0.17,0.0377,9.0,0.63,0.0,none detected,1.0,calibrated,,,1.9,yes,
+swe_senior_salary,senior,2016,2025,10,10,10,ok,C,median,all,log trend,none needed,endpoint,0.11,0.0194,9.0,0.63,0.0,trend changed between halves,1.0,bands wide (conservative),,,1.4,yes,trend changed
+swe_senior_tc_us,senior-tc,2024,2025,2,2,2,insufficient (<5 yearly changes),D,,,,,,,,,,,,,,,,,,
+unemp_rate_comp,bls_cps,2010,2025,16,201,3,ok,C,median,all,log trend,none needed,endpoint,-3.05,0.2207,15.0,0.63,0.0,none detected,1.74,"biased: past forecasts were too optimistic (x1.64); the trend changed, refit on recent years",,,25.5,weak (80% range > 10x),hindcast biased
+wage_oes_median,bls_oes,2016,2025,10,10,10,ok,C,median,all,log trend,none needed,endpoint,0.14,0.0218,9.0,0.63,0.0,trend changed between halves,1.0,calibrated,,,1.4,yes,trend changed
+wage_oes_p10,bls_oes,2016,2025,10,10,10,ok,C,median,all,log trend,outlier: one yearly change is 12.6 robust SDs from typical; used a robust trend and volatility,robust,0.58,0.005,9.0,0.63,0.0,trend changed between halves,1.0,bands wide (conservative),,,1.1,yes,trend changed
+wage_oes_p90,bls_oes,2016,2025,10,10,10,ok,B,median,all,log trend,none needed,endpoint,0.17,0.0377,9.0,0.63,0.0,none detected,1.0,calibrated,,,1.9,yes,

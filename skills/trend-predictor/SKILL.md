@@ -10,7 +10,7 @@ description: TREND-PREDICTOR projects a field's constraints (costs, performance,
 **Invocation:** `/trend-predictor "<project>" [field] [region] [horizons] [standard|deep]` or `/trend-predictor scan "<field>" [region] [horizons]`.
 
 - **Project mode (default):** "will *this* be feasible by +5 / +10?" Example: `/trend-predictor "home robot that folds laundry for under $2,000" robotics global`.
-- **Scan mode:** "what becomes viable in *this field* by +5 / +10?" Projects every constraint, lists the thresholds most likely to be crossed, turns the top 3–5 into candidate projects and scores each one as in project mode.
+- **Scan mode:** "what becomes viable in *this field* by +5 / +10?" Projects every constraint, lists the thresholds most likely to be crossed (one probability per threshold), turns the top 3–5 into candidate projects and scores each one as in project mode. **Only candidate projects get a joint probability and a verdict.** Never multiply unrelated field-level conditions into one "feasibility of the field" number: it describes no project anyone could build, so it cannot be acted on.
 - **`horizons`:** `5,10` by default. Accept `5`, `5,10,15`, `h=7`. Allowed 1–15. The engine's ranges are validated up to about 10–11 years (Farmer & Lafond 2016); beyond 10 say so in bold and treat results as scenarios, not forecasts.
 
 ## What the evidence says (why the skill works this way)
@@ -51,7 +51,7 @@ For each requirement decide its **kind**:
 
 - **curve:** a measurable cost or performance that must reach a **target value** (e.g. actuator cost ≤ $40 per joint; battery ≥ 400 Wh/kg). Derive the target from unit economics, not hope: target price to the customer, minus margin and other costs, gives the most this input can cost. If the project must beat an incumbent, the target is the incumbent's *projected* value at the horizon (forecast the incumbent too, and say so). Record the derivation in `requirements.csv:target_derivation`.
 - **event:** a dated future change: a law in force, a patent expiring, a standard published, a factory or launch. Goes in `events.csv`.
-- **readiness:** a component or process not yet proven at scale. Record the current TRL (1–9) **with evidence** (a paper, demo, pilot, product) and the TRL needed (usually 9).
+- **readiness:** a specific component or process not yet proven at scale. Record the current TRL (1–9) **with evidence** (a paper, demo, pilot, product) and the TRL needed (usually 9). Use it only for a concrete artefact with an engineering path (a gripper, a cell chemistry, a sensor). "AI can do job X", "the market accepts Y" and similar capability or adoption claims are **judgment** requirements, not readiness: the TRL duration priors would make them look near-certain.
 - **judgment:** anything else (customer behavior, insurer coverage, social acceptance). Needs a probability per horizon from a cited source: Metaculus/Manifold/Good Judgment Open questions, published expert elicitations, adoption studies, surveys. If none exists, see Phase 6.
 
 Mark each as `critical` (project fails without it) or not. Aim for 5–12 requirements; more than 15 means the project is too vague: ask the user to narrow it.
@@ -77,7 +77,7 @@ python3 trend_predictor.py hindcast --end <ORIGIN>
 python3 trend_predictor.py forecast --end <ORIGIN> --horizons 5,10 --plots
 ```
 
-- **Read `calibration.csv` first.** `calibrated` = trust the ranges. `bands too narrow` = add a scenario row with `volatility_multiplier` (1.5–2) and use it, or grade the series C. `too few checks` = say the ranges are untested.
+- **Read `calibration.csv` first, and quote it exactly.** Every calibration number in the report (coverage of the 80% and 95% ranges, bias) is copied from `calibration.csv`, the `ALL` row for the pooled figure. Never restate, round in your favour, or recompute it in prose. `calibrated` = trust the ranges. `bands too narrow` = add a scenario row with `volatility_multiplier` (1.5–2) and use it, or grade the series C. `too few checks` = say the ranges are untested.
 - **Break check** (`series_fit.csv`): `slowing` or `accelerating` means the second half of the history moved at a different rate. Then the recent rate is the better guide: rerun with only recent years (filter `points.csv` into `points_recent.csv`, pass `--points`) and present both.
 - **Scenarios** (`scenarios.csv`, optional, each sourced): `roadmap` (an industry roadmap's stated rate, e.g. IRDS, IEA), `wright` (learning rate × a cited deployment forecast: annual_change = (1−LR)^(log2 of yearly growth in cumulative production) − 1; write the arithmetic in `note`), `stall` (rate halves or stops, e.g. after a physical limit or subsidy end). Show them as dotted lines; never merge them. If you weight scenarios, the weights must sum to 1 (people's scenario probabilities typically sum to ~2 before renormalising).
 - **Automatic repairs.** The engine checks every series and fixes what arithmetic can fix, recording each repair in `series_fit.csv:fixes_applied` and on the fan chart. Each is chosen by an explicit test, not by trying many fits and keeping the best one (that overfits noise):
@@ -126,6 +126,7 @@ python3 trend_predictor.py feasibility --end <ORIGIN> --horizons 5,10 --lead-yea
 - `--lead-years`: how long it takes to build and launch the project once the constraints allow it (cite or justify; typical: software 1, hardware product 2–3, regulated medical 5+).
 - Outputs: `feasibility.csv` (per requirement and horizon, plus the full year-by-year path and median crossing year), `project_score.csv` (joint probability, weakest link, verdict, start window), `plots/feasibility.png`.
 - **Verdicts:** LIKELY FEASIBLE (weakest ≥ 80% and joint ≥ 60%), PLAUSIBLE (joint ≥ 35%), LONG SHOT (≥ 12%), UNLIKELY (< 12%).
+- **UNCERTAIN (applied by the engine).** Every requirement gets an `evidence_grade` in `feasibility.csv`: curves inherit their series grade (A–D); judgments are Low when the probability came from this run's own estimators (IDEA) and Medium when it cites an external forecast, elicitation or survey (set `evidence_grade` in `requirements.csv` to override, with the reason in `note`); readiness and events are Medium with cited evidence, Low without. When the weakest critical requirement's evidence is C, D or Low, `project_score.csv` reports **`UNCERTAIN (driven by <req>)`**, and keeps the score in `verdict_if_inputs_hold`. Report the UNCERTAIN verdict as the headline. You may show `verdict_if_inputs_hold` next to it, labelled as conditional, never instead of it. The way to remove UNCERTAIN is better evidence for that requirement (denser data, a crowd forecast, a published elicitation), not a different label.
 - **Start window:** the first year the joint probability passes 50%, minus the lead time. "Start building by YYYY." If that year has passed, the project is buildable now; if it never comes within the horizons, say which requirement holds it back.
 - **Sensitivity:** for the weakest link, rerun with its target ±25% and with the `stall` scenario. Report how much the verdict moves. A verdict that flips on a ±25% target change is fragile; say so.
 
@@ -155,7 +156,7 @@ A **fresh** general-purpose agent, given only the CSVs, opens every source URL a
 ## Interpretation rules
 
 - **Not prophecy.** "61% by 2035, if the 2010–2025 trend continues" — always with the condition.
-- **Grade C/D series and Low-grade judgments can't carry the headline.** If the weakest link is one of them, the verdict is "uncertain, driven by <requirement>".
+- **Grade C/D series and Low-grade judgments can't carry the headline.** The engine enforces this (UNCERTAIN verdict, see Phase 7); don't override it in prose.
 - **Feasible ≠ adopted ≠ profitable.** Say which one each number is about.
 - **Don't argue with the calibrated trend on cost and performance** unless a break check or a cited physical limit says to. Argue freely about adoption.
 - **Beyond 10 years, scenarios only.**
@@ -185,8 +186,9 @@ Same as PARADIGMA for `points.csv`, `noncost.csv`, `companies.csv`, `verificatio
 **constraints.csv** — PARADIGMA columns plus `floor,ceiling,bound_source,domain`.
 
 **requirements.csv**
-`req_id,description,kind,critical,constraint_id,tier,target_value,better,target_derivation,scenario,event_id,current_trl,needed_trl,trl_evidence_url,years_per_step,domain,p_now,p_5y,p_10y,source_url,note`
+`req_id,description,kind,critical,constraint_id,tier,target_value,better,target_derivation,scenario,event_id,current_trl,needed_trl,trl_evidence_url,years_per_step,domain,p_now,p_5y,p_10y,source_url,evidence_grade,note`
 - `kind`: `curve | event | readiness | judgment`. Fill only the columns that kind uses.
+- `evidence_grade` (judgment, optional): `High | Medium | Low`. Blank = inferred (IDEA agents → Low; cited external source → Medium).
 - `p_Ny` (judgment): probability by +N years; any horizons, e.g. `p_3y`.
 
 **events.csv**
@@ -202,7 +204,7 @@ Same as PARADIGMA for `points.csv`, `noncost.csv`, `companies.csv`, `verificatio
 **predictions_log.csv**
 `claim_id,run_date,claim,metric,threshold,resolve_date,probability,resolved_value,outcome,brier,source`
 
-**Engine outputs:** `series_fit.csv`, `forecasts.csv` (q025…q975 per year and scenario), `hindcast.csv`, `calibration.csv`, `feasibility.csv`, `project_score.csv`, `rejected_points.csv`, `plots/fan_*.png`, `plots/feasibility.png`, `trend_predictor_<project>.xlsx`.
+**Engine outputs:** `series_fit.csv`, `forecasts.csv` (q025…q975 per year and scenario), `hindcast.csv`, `calibration.csv`, `feasibility.csv` (with `evidence_grade` per requirement), `project_score.csv` (with `weakest_evidence`, `verdict`, `verdict_if_inputs_hold`), `rejected_points.csv`, `plots/fan_*.png`, `plots/feasibility.png`, `trend_predictor_<project>.xlsx`.
 
 **Series grades:** A = ≥15 yearly changes, ≥3 sources, data no older than ORIGIN−2. B = ≥8 changes, ≥2 sources, ≤3 years stale. C = usable but weak, or an unresolved warning (a repaired series is at most B). D = fewer than 5 changes: no forecast.
 

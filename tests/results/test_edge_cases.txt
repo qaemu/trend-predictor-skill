@@ -29,6 +29,11 @@ PASS R12 higher-better reachable target in (0,1]
 PASS project score has verdicts
 PASS feasibility plot
 PASS unscored critical requirement -> 'incomplete', not a fake verdict
+PASS UNCERTAIN when weakest link is an IDEA-agent judgment
+PASS UNCERTAIN keeps the score in verdict_if_inputs_hold
+PASS externally sourced judgment is Medium -> verdict not UNCERTAIN
+PASS explicit evidence_grade=High overrides the inference
+PASS UNCERTAIN when weakest link is an uninformative (grade C) curve
 PASS runs with no constraints.csv and theilsen drift
 PASS workbook with missing sheets
 PASS feasibility without requirements.csv exits with a clear message

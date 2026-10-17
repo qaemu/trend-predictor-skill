@@ -637,6 +637,49 @@ def widen_factor(domain, h, physical=None):
     return 1 + w * max(0.0, h - 5) / 5
 
 
+
+def grade_series(fit, s, info, origin, hz_end, cal_verdict=""):
+    """Same grading rules as `forecast`: A/B/C/D plus the reason it is weak, if it is."""
+    if fit is None:
+        return "D", "no usable curve"
+    stale = origin - int(s.year.max())
+    n_src = s.attrs.get("n_sources", 1)
+    g = ("A" if fit["n_diffs"] >= 15 and n_src >= 3 and stale <= 2 else
+         "B" if fit["n_diffs"] >= 8 and n_src >= 2 and stale <= 3 else "C")
+    why = [] if g != "C" else ["few yearly changes, few sources or stale data"]
+    span = hz_end - fit["t0"]
+    lo, hi = m_value(fit, span, 0.10), m_value(fit, span, 0.90)
+    if max(hi, lo) / max(min(hi, lo), 1e-300) > 100:
+        why.append("uninformative range (>100x)")
+    if info.get("mixed") and info.get("aggregation") == "median":
+        why.append("mixed products")
+    if str(cal_verdict).startswith(("biased", "bands too narrow")) and info.get("window") == "all":
+        why.append("hindcast: " + str(cal_verdict).split(":")[0])
+    if why and g in ("A", "B"):
+        g = "C"
+    if info.get("fixes") and g == "A":
+        g = "B"
+    return g, "; ".join(why)
+
+
+def grade_judgment(r):
+    """Evidence grade for a judgment requirement: explicit `evidence_grade` column wins; otherwise inferred.
+    Probabilities from the run's own agents (IDEA) are Low; a cited external forecast or survey is Medium."""
+    g = str(r.get("evidence_grade", "") or "").strip().capitalize()
+    if g in ("High", "Medium", "Low"):
+        return g
+    src = str(r.get("source_url", "")) + " " + str(r.get("note", ""))
+    m = re.search(r"\b(High|Medium|Low)[ -]grade", src, re.I)
+    if m:
+        return m.group(1).capitalize()
+    if "idea" in src.lower() and "agent" in src.lower():
+        return "Low"
+    return "Medium" if "http" in src else "Low"
+
+
+WEAK_EVIDENCE = {"C", "D", "Low"}
+
+
 def cmd_feasibility(a):
     req = R(a.requirements)
     if req.empty:
@@ -648,6 +691,8 @@ def cmd_feasibility(a):
     scen = R(a.scenarios)
     events = R(a.events)
     evmap = {r["event_id"]: r for _, r in events.iterrows()} if len(events) else {}
+    calf = R(os.path.join(a.outdir, "calibration.csv"))
+    cal = {(c.constraint_id, c.tier): c.verdict for _, c in calf.iterrows()} if len(calf) else {}
     rows = []
     all_h = sorted(set(horizons) | set(range(0, max(horizons) + 1)))
     for _, r in req.iterrows():
@@ -667,7 +712,10 @@ def cmd_feasibility(a):
             f, s, info = choose_model(g, mt, a, origin + max(horizons)) if len(g) else (None, None, {})
             if f is None:
                 note = "no usable curve; treat as judgment"
+                base["evidence_grade"], base["evidence_note"] = "D", "no usable curve"
             else:
+                base["evidence_grade"], base["evidence_note"] = grade_series(
+                    f, s, info, origin, origin + max(horizons), cal.get((cid, tier), ""))
                 sc = r.get("scenario", "") or "trend"
                 fits = dict(apply_scenarios(f, cid, tier, scen))
                 f = fits.get(sc, f)
@@ -689,6 +737,9 @@ def cmd_feasibility(a):
                 for h in all_h:
                     probs[h] = event_prob(ev, origin + h)
                 note = f"{ev.get('type','')}/{ev.get('status','')} due {ev.get('date_scheduled','')}"
+                base["evidence_grade"] = "Medium" if str(ev.get("source_url", "")).startswith("http") else "Low"
+                base["evidence_note"] = "base-rate prior by type and status" + (
+                    "" if base["evidence_grade"] == "Medium" else "; no source URL")
         elif kind == "readiness":
             cur, need = num(r["current_trl"]), num(r.get("needed_trl", 9) or 9)
             for h in all_h:
@@ -696,6 +747,9 @@ def cmd_feasibility(a):
                 probs[h] = readiness_prob(cur, need, dom, h + a.since_offset, num(r.get("years_per_step", "")),
                                           widen_factor(dom, h, a.widen))
             note = f"TRL {cur:g}->{need:g}, prior {dom or 'hardware'}"
+            has_ev = str(r.get("trl_evidence_url", "")).startswith("http")
+            base["evidence_grade"] = "Medium" if has_ev else "Low"
+            base["evidence_note"] = "duration prior per TRL step" + ("" if has_ev else "; current TRL has no cited evidence")
         elif kind == "judgment":
             pts = {int(k[2:-1]): num(r[k]) for k in r.index if re.fullmatch(r"p_\d+y", k) and num(r[k]) == num(r[k])}
             if pts:
@@ -703,6 +757,9 @@ def cmd_feasibility(a):
                 for h in all_h:
                     probs[h] = float(np.interp(h, [0] + xs, [num(r.get("p_now", 0) or 0)] + [pts[x] for x in xs]))
             note = f"source: {r.get('source_url','')}"
+            base["evidence_grade"] = grade_judgment(r)
+            base["evidence_note"] = ("probability from the run's own estimators (IDEA)" if base["evidence_grade"] == "Low"
+                                     else "cited external forecast or survey")
         for h in horizons:
             p, pr = probs.get(h, np.nan), raw_p.get(h, probs.get(h, np.nan))
             base[f"p_model_{h}y"] = round(pr, 3) if pr == pr else np.nan
@@ -723,9 +780,17 @@ def cmd_feasibility(a):
             continue
         joint = float(np.prod(ps))
         weak = crit.loc[ps.idxmin()]
+        v = verdict(joint, float(ps.min()))
+        ev_g = str(weak.get("evidence_grade", ""))
+        # Rule: a verdict cannot rest on weak evidence. If the weakest link is a grade C/D curve or a Low-grade
+        # judgment/readiness/event, the verdict is UNCERTAIN; the score it would have is kept for reference.
+        if ev_g in WEAK_EVIDENCE:
+            shown = f"UNCERTAIN (driven by {weak.req_id}: evidence grade {ev_g})"
+        else:
+            shown = v
         out.append({"horizon_years": h, "year": origin + h, "joint_if_independent": round(joint, 3),
                     "weakest_link_bound": round(float(ps.min()), 3), "weakest_requirement": weak.req_id,
-                    "verdict": verdict(joint, float(ps.min()))})
+                    "weakest_evidence": ev_g, "verdict": shown, "verdict_if_inputs_hold": v})
     # start window: latest year to start so that, after lead time, P(all critical met) >= 0.5
     lead = a.lead_years
     paths = [json.loads(p) for p in crit.path]
